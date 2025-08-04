@@ -1,66 +1,70 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Huawei User Research</title>
+  <title>User Research Portal | Huawei</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    iframe {
+    iframe, .tidycal-embed {
       width: 100%;
       max-width: 100%;
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-2xl sm:text-3xl font-bold">华为新品调研 · 用户招募</h1>
-      <p class="mt-1 text-gray-500 text-sm sm:text-base">参与调研，赢取精美礼品</p>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto py-6 px-4">
+      <h1 class="text-2xl sm:text-3xl font-bold text-center">Huawei User Research Portal</h1>
+      <p class="mt-2 text-center text-gray-500 text-sm sm:text-base">Multiple research projects are open. Join now and receive exclusive rewards!</p>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
-    <section class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">📌 调研背景</h2>
-      <p class="text-sm sm:text-base">为了更好地优化产品设计与用户体验，我们正在招募华为新品潜在用户参与访谈调研。调研将以远程/线下方式进行，时长约为30分钟。</p>
+  <main class="max-w-4xl mx-auto py-10 px-4 space-y-12">
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-xl font-semibold mb-4">📢 About the Research</h2>
+      <p class="text-sm sm:text-base leading-relaxed">We are conducting a series of user research interviews and surveys with Huawei users. Each session lasts approximately 30 minutes and includes a thank-you gift. See below for the projects currently open for sign-up:</p>
     </section>
 
-    <section class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">🎯 招募对象</h2>
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-3">📱 Tablet Usage Study</h2>
+      <ul class="text-sm sm:text-base list-disc pl-5 space-y-1 mb-4">
+        <li>Participants: Huawei / iPad / Samsung tablet users</li>
+        <li>Format: Remote interviews</li>
+        <li>Reward: R500 Huawei gift pack</li>
+      </ul>
+      <div class="tidycal-embed mb-2" data-path="usersurvey/tabletsurvey"></div>
+    </section>
+
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-3">📸 Mobile Photography Habits Study</h2>
+      <ul class="text-sm sm:text-base list-disc pl-5 space-y-1 mb-4">
+        <li>Participants: Smartphone users who take/edit photos regularly</li>
+        <li>Format: Online interviews + image sharing</li>
+        <li>Reward: One pair of FreeBuds SE2</li>
+      </ul>
+      <div class="tidycal-embed mb-2" data-path="usersurvey/camera"></div>
+    </section>
+
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-3">🎯 Participation Guidelines</h2>
       <ul class="list-disc pl-5 space-y-1 text-sm sm:text-base">
-        <li>年龄18-55岁，男女不限</li>
-        <li>使用过华为或三星智能设备</li>
-        <li>对拍照、生态应用、折叠屏等有兴趣</li>
-        <li>可参与远程或线下访谈（约30分钟）</li>
+        <li>Please ensure your contact details are accurate for interview scheduling.</li>
+        <li>You may join multiple projects, but rewards are limited to one per project.</li>
+        <li>All data will be used for research purposes only and kept confidential.</li>
       </ul>
     </section>
 
-    <section class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">🎁 调研礼品</h2>
-      <p class="text-sm sm:text-base">成功参与调研可获得价值 R500 的精美华为周边礼品或耳机。</p>
-    </section>
-
-    <section class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">📝 报名表单</h2>
-      <div class="tidycal-embed" data-path="usersurvey/tabletsurvey"></div><script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
-
-      <p class="text-xs text-gray-400 mt-2">* 所有信息将严格保密，仅用于本次调研联系</p>
-    </section>
-
-    <section class="mb-10">
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">📅 报名截止</h2>
-      <p class="text-sm sm:text-base">请在 <strong>2025年8月15日前</strong> 完成报名，调研名额有限，先到先得！</p>
-    </section>
-
-    <section>
-      <h2 class="text-xl sm:text-2xl font-semibold mb-4">📨 联系方式</h2>
-      <p class="text-sm sm:text-base">如有任何问题，请通过邮箱 <a href="mailto:userresearch@huawei.com" class="text-blue-600 underline">userresearch@huawei.com</a> 联系我们。</p>
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-3">📨 Contact</h2>
+      <p class="text-sm sm:text-base">If you have any questions, please contact us at <a href="mailto:userresearch@huawei.com" class="text-blue-600 underline">userresearch@huawei.com</a>. We'll respond as soon as possible.</p>
     </section>
   </main>
 
-  <footer class="bg-gray-100 text-center py-4 text-xs sm:text-sm text-gray-500">
-    © 2025 Huawei Research Team. All rights reserved.
+  <footer class="bg-white border-t text-center py-4 text-xs sm:text-sm text-gray-500">
+    © 2025 Huawei User Research Team. All rights reserved.
   </footer>
+
+  <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
 </body>
 </html>
