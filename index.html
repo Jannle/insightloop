@@ -10,6 +10,42 @@
         width: 100%;
         max-width: 100%;
       }
+      .floating-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        background-color: #2563eb;
+        color: white;
+        padding: 0.75rem 1.25rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        transition: background-color 0.3s;
+      }
+      .floating-btn:hover {
+        background-color: #1d4ed8;
+      }
+      #tidycalModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        display: none;
+      }
+      #tidycalModal iframe {
+        width: 90%;
+        height: 80%;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      }
     </style>
   </head>
   <body class="bg-gradient-to-tr from-blue-100 to-blue-50 min-h-screen text-gray-800">
@@ -66,6 +102,11 @@
     <footer class="text-center text-sm text-gray-400 py-6 border-t">
       © 2025 Huawei User Research Team. All rights reserved.
     </footer>
+
+    <button class="floating-btn" onclick="document.getElementById('tidycalModal').style.display='flex'">📅 Quick Book</button>
+    <div id="tidycalModal" onclick="this.style.display='none'">
+      <iframe src="https://tidycal.com/usersurvey/tabletsurvey" title="Tablet Survey Booking"></iframe>
+    </div>
 
     <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
   </body>
