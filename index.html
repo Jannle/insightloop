@@ -1,158 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>User Research Recruitment</title>
+  <meta name="color-scheme" content="light dark" />
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
+    :root {
+      --bg: #f7f7f8;
+      --fg: #111418;
+      --muted: #6b7280;
+      --primary: #ff5722;
+      --primary-600: #e64a19;
+      --surface: #ffffff;
+      --radius: 12px;
+      --shadow: 0 6px 20px rgba(0,0,0,.18);
     }
-    .container {
-      max-width: 800px;
-      width: 100%;
-      text-align: center;
-    }
-    .recruitment-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    /* 🔹 Modal 样式 */
-    .modal {
-      display: none; /* 默认隐藏 */
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.6);
-    }
-    .modal-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-      position: relative;
-    }
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-      cursor: pointer;
-    }
-    .question {
-      margin: 15px 0;
-    }
-    input {
-      padding: 8px;
-      width: 80%;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    .form-section {
-      margin-top: 15px;
-      display: none;
-    }
+    body { margin: 0; font-family: sans-serif; background: var(--bg); color: var(--fg); }
+    .container { max-width: 900px; margin: 0 auto; padding: 20px; text-align: center; }
+    .recruitment-img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .floating-btn { position: fixed; right: 20px; bottom: 20px; padding: 16px 28px; background: var(--primary); color: #fff; border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow); animation: pulse 1.8s infinite, bounce 3s infinite; }
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,87,34,.7);}70%{box-shadow:0 0 0 25px rgba(255,87,34,0);}100%{box-shadow:0 0 0 0 rgba(255,87,34,0);} }
+    @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-6px);}60%{transform:translateY(-3px);} }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; }
+    .modal-content { background: var(--surface); border-radius: var(--radius); padding: 20px; max-width: 400px; width: 90%; }
+    .close-btn { float: right; cursor: pointer; }
+    .question { margin: 12px 0; text-align: left; }
+    select, input { width: 100%; padding: 10px; margin-top: 6px; border-radius: 6px; border: 1px solid #ccc; }
+    .form-section { margin-top: 16px; display: none; text-align: center; }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- 招募图片 -->
-    <img src="AK-user-recruiment.jpg" alt="User Research Recruitment" class="recruitment-img">
-
-    <!-- 打开弹窗按钮 -->
-    <button onclick="openModal()">Apply Now</button>
+    <img src="Ak-user-recruitment.jpg" alt="User Research Recruitment" class="recruitment-img">
   </div>
-
-  <!-- 🔹 Modal 弹窗 -->
+  <button class="floating-btn" onclick="openModal()">Apply Now</button>
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
+      <span class="close-btn" onclick="closeModal()">&times;</span>
       <h2>Quick Questions</h2>
-      <div class="question">
-        <label>What is your device brand?</label><br>
-        <input type="text" id="brand" placeholder="e.g. Huawei, Samsung">
-      </div>
-      <div class="question">
-        <label>What is your device model?</label><br>
-        <input type="text" id="model" placeholder="e.g. Mate X3, Galaxy Z Fold5">
-      </div>
-      <button onclick="checkEligibility()">Submit</button>
+      <form id="eligibilityForm">
+        <div class="question">
+          <label for="brandSelect">What is your device brand?</label>
+          <select id="brandSelect" name="brandSelect">
+            <option value="" selected disabled>Select your brand</option>
+            <option value="huawei">Huawei</option>
+            <option value="samsung">Samsung</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="text" id="brandOther" name="brandOther" placeholder="Please specify your brand" style="display:none;" />
+        </div>
 
-      <!-- 预约表单 -->
+        <div class="question">
+          <label for="modelSelect">What is your device model?</label>
+          <select id="modelSelect" name="modelSelect">
+            <option value="" selected disabled>Select your model</option>
+            <option value="other">Other</option>
+          </select>
+          <input type="text" id="modelOther" name="modelOther" placeholder="Please specify your model" style="display:none;" />
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="primary-btn">Submit</button>
+          <button type="button" class="secondary-btn" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
       <div class="form-section" id="formSection">
         <h3>Congratulations! You qualify 🎉</h3>
-        <a href="https://forms.gle/your-form-link" target="_blank">
-          <button>Fill in Reservation Form</button>
-        </a>
+        <a href="https://forms.gle/your-form-link" target="_blank"><button>Fill in Reservation Form</button></a>
       </div>
     </div>
   </div>
-
   <script>
-    // 打开弹窗
-    function openModal() {
-      document.getElementById("myModal").style.display = "block";
-    }
-    // 关闭弹窗
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-    // 点击空白处关闭
-    window.onclick = function(event) {
-      if (event.target == document.getElementById("myModal")) {
-        closeModal();
+    const brandSelect = document.getElementById('brandSelect');
+    const brandOther = document.getElementById('brandOther');
+    const modelSelect = document.getElementById('modelSelect');
+    const modelOther = document.getElementById('modelOther');
+    const formSection = document.getElementById('formSection');
+    const form = document.getElementById('eligibilityForm');
+
+    const catalog = {
+      huawei: ["mate x3", "mate x6"],
+      samsung: ["galaxy z fold4", "galaxy z fold5", "galaxy z fold6"]
+    };
+
+    function openModal(){ document.getElementById('myModal').style.display='flex'; }
+    function closeModal(){ document.getElementById('myModal').style.display='none'; }
+
+    brandSelect.addEventListener('change', () => {
+      if(brandSelect.value === 'other'){
+        brandOther.style.display='block';
+        modelSelect.innerHTML='<option value="other">Other</option>';
+        modelOther.style.display='block';
+      } else if(brandSelect.value){
+        brandOther.style.display='none';
+        modelOther.style.display='none';
+        // populate models
+        modelSelect.innerHTML='<option value="" selected disabled>Select your model</option><option value="other">Other</option>';
+        catalog[brandSelect.value].forEach(m => {
+          const opt=document.createElement('option');
+          opt.value=m; opt.textContent=m;
+          modelSelect.appendChild(opt);
+        });
       }
-    }
+    });
 
-    // 判断资格
-    function checkEligibility() {
-      const brand = document.getElementById("brand").value.trim().toLowerCase();
-      const model = document.getElementById("model").value.trim().toLowerCase();
-
-      // ✅ 可根据需求修改
-      const allowedBrands = ["huawei", "samsung"];
-      const allowedModels = ["mate x3", "mate x6", "galaxy z fold4", "galaxy z fold5", "galaxy z fold6"];
-
-      if (allowedBrands.includes(brand) && allowedModels.includes(model)) {
-        document.getElementById("formSection").style.display = "block";
+    modelSelect.addEventListener('change', () => {
+      if(modelSelect.value==='other'){
+        modelOther.style.display='block';
       } else {
-        alert("Sorry, only specific devices qualify for this research.");
+        modelOther.style.display='none';
       }
-    }
+    });
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const brandVal = brandSelect.value==='other' ? brandOther.value.trim().toLowerCase() : brandSelect.value;
+      const modelVal = modelSelect.value==='other' ? modelOther.value.trim().toLowerCase() : modelSelect.value;
+      if(!brandVal || !modelVal){
+        alert('Please complete both brand and model');
+        return;
+      }
+      if(catalog[brandSelect.value] && catalog[brandSelect.value].includes(modelVal)){
+        formSection.style.display='block';
+      } else {
+        alert('Sorry, only specific devices qualify for this research.');
+      }
+    });
   </script>
 </body>
 </html>
