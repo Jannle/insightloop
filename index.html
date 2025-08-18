@@ -3,224 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🕐 Smartwatch Interview Invitation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>User Research Recruitment</title>
   <style>
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       background-color: #f9f9f9;
-      color: #1a202c;
+      font-family: Arial, sans-serif;
     }
-    header {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      padding: 60px 20px 30px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    header h2 {
-      font-size: 1.5rem;
-      font-weight: 500;
-    }
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      position: relative;
-    }
-    .columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 30px;
-      align-items: center;
-      justify-content: center;
-    }
-    .columns img {
-      max-width: 240px;
+    .container {
+      max-width: 800px;
       width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .columns .details {
-      flex: 1 1 300px;
-    }
-    ul {
-      padding-left: 20px;
-      margin: 0;
-    }
-    ul li {
-      margin-bottom: 10px;
-    }
-    .info {
-      margin: 20px 0;
-      font-size: 1.1rem;
-    }
-    .highlight {
-      background: #e6f0ff;
-      padding: 16px;
-      border-left: 5px solid #2563eb;
-      border-radius: 6px;
-      margin-bottom: 30px;
-    }
-    .register {
-      background: linear-gradient(135deg, #2563eb, #1e40af);
-      color: white;
-      padding: 20px;
-      border-radius: 10px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
-    .register p {
-      margin: 5px 0;
-      font-size: 1.1rem;
-    }
-    .qr {
-      margin-top: 15px;
-    }
-    .qr img {
-      width: 140px;
-      height: auto;
+    .recruitment-img {
       max-width: 100%;
-    }
-    .floating-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(to right, #2563eb, #1e40af);
-      color: #fff;
-      padding: 14px 24px;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
-      z-index: 1000;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-    }
-    .floating-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(30, 64, 175, 0.5);
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .modal-content {
-      width: 95%;
-      max-width: 700px;
-      height: 90vh;
-      background: white;
+      height: auto;
       border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      animation: fadeIn 0.3s ease-in-out;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
-    .modal-content iframe {
-      flex: 1;
-      width: 100%;
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
       border: none;
-    }
-    .close-modal {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 24px;
-      color: #666;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
       cursor: pointer;
-      z-index: 10;
     }
-    @keyframes fadeIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    button:hover {
+      background-color: #0056b3;
     }
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      header h2 { font-size: 1.2rem; }
-      .columns { flex-direction: column; align-items: center; }
-      .content { padding: 20px 15px; }
-      .register p { font-size: 1rem; }
+    .form-section {
+      margin-top: 20px;
+      display: none; /* 初始隐藏 */
     }
-    @media (max-width: 480px) {
-      header { padding: 40px 15px 20px; }
-      header h1 { font-size: 1.6rem; }
-      header h2 { font-size: 1rem; }
-      .highlight { font-size: 0.95rem; }
-      .info p, ul li { font-size: 0.95rem; }
+    .question {
+      margin: 10px 0;
+    }
+    input {
+      padding: 8px;
+      width: 70%;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>USER RECRUITMENT</h1>
-    <h2>SMARTWATCH INTERVIEW</h2>
-  </header>
+  <div class="container">
+    <!-- 招募图片 -->
+    <img src="your-image.jpg" alt="User Research Recruitment" class="recruitment-img">
 
-  <main class="content">
-    <div class="columns">
-      <img src="smartwatch.jpg" alt="Smartwatch" />
-      <div class="details">
-        <ul>
-          <li>📱 8 Samsung smartwatch users</li>
-          <li>💪 4 Whoop users</li>
-          <li>🎯 4 Huawei watch users (previous Samsung users)</li>
-          <li>🔍 4 Non-smartwatch users (plan to purchase)</li>
-        </ul>
+    <!-- 按钮 -->
+    <button onclick="showQuestions()">Apply Now</button>
+
+    <!-- 问题部分 -->
+    <div id="questions" style="display:none; margin-top:20px;">
+      <div class="question">
+        <label>What is your device brand?</label><br>
+        <input type="text" id="brand" placeholder="e.g. Huawei, Samsung">
       </div>
-    </div>
-
-    <div class="info">
-      <p><strong>📍 Location:</strong> Gloria Building, Dubai Internet City</p>
-      <p><strong>⏱ Duration:</strong> Around 1 hour</p>
-      <p><strong>📅 Validity:</strong> July 31 – August 6</p>
-    </div>
-
-    <div class="highlight">
-      🎁 Receive an exquisite gift worth 200–700 AED. <br>
-      🕐 First come, first served!
-    </div>
-
-    <div class="register">
-      <p><strong>TO REGISTER</strong></p>
-      <p>Leon: +27 74 870 6497</p>      
-      <div class="qr">
-        <img src="qr.png" alt="QR Code to Register" />
+      <div class="question">
+        <label>What is your device model?</label><br>
+        <input type="text" id="model" placeholder="e.g. Mate X3, Galaxy Z Fold5">
       </div>
-      <p style="margin-top: 10px;">Scan the QR or WhatsApp us.</p>
+      <button onclick="checkEligibility()">Submit</button>
     </div>
-  </main>
 
-  <button class="floating-btn" onclick="document.getElementById('modal').style.display='flex'">📅 Book Now</button>
-
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-      <iframe src="https://tidycal.com/usersurvey/tabletsurvey" allowfullscreen></iframe>
+    <!-- 预约表部分 -->
+    <div class="form-section" id="formSection">
+      <h3>Congratulations! You qualify 🎉</h3>
+      <!-- 这里放你的 Google Form 或预约表单链接 -->
+      <a href="https://forms.gle/your-form-link" target="_blank">
+        <button>Fill in Reservation Form</button>
+      </a>
     </div>
   </div>
+
+  <script>
+    function showQuestions() {
+      document.getElementById("questions").style.display = "block";
+    }
+
+    function checkEligibility() {
+      const brand = document.getElementById("brand").value.trim().toLowerCase();
+      const model = document.getElementById("model").value.trim().toLowerCase();
+
+      // ✅ 在这里设置符合条件的品牌和型号
+      const allowedBrands = ["huawei", "samsung"];
+      const allowedModels = ["mate x3", "mate x6", "galaxy z fold4", "galaxy z fold5", "galaxy z fold6"];
+
+      if (allowedBrands.includes(brand) && allowedModels.includes(model)) {
+        document.getElementById("formSection").style.display = "block";
+      } else {
+        alert("Sorry, only specific devices qualify for this research.");
+      }
+    }
+  </script>
 </body>
 </html>
